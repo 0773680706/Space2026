@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Table - Design Token Library</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Table</h1>
+  </header>
+  <main>
+    <div class="card">
+      <h2>帳號列表</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>帳號</th>
+            <th>信箱</th>
+            <th>狀態</th>
+            <th>負責群組</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+      <div class="pagination" id="pagination"></div>
+    </div>
+<br>
+<br>
+<br>
+    <div class="card">
+      <h2>租戶列表</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>租戶名稱</th>
+            <th>租戶代碼</th>
+            <th>租戶群組</th>
+            <th>訂閱方案</th>
+            <th>有效時間</th>
+            <th>付款狀態</th>
+            <th>備註</th>
+            <th>詳細資訊</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>BowFlex</td>
+            <td>BowFlex_USA</td>
+            <td></td>
+            <td>旗艦版</td>
+            <td>2026/08/01~2027/08/01<span class="valid-period__extra">(+10天緩衝)</span></td>
+            <td><span class="badge badge--success">Active</span></td>
+            <td></td>
+            <td><button class="icon-btn"><img src="img/Tenant.png" alt="詳細資訊"></button></td>
+            <td>
+              <div class="icon-btn-group">
+                <button class="icon-btn--ghost"><img src="img/Edit.svg" alt="編輯"></button>
+                <button class="icon-btn--ghost"><img src="img/Badge.svg" alt="設定認證"></button>
+                <button class="icon-btn--ghost"><img src="img/Tenant_delet.svg" alt="刪除"></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>子公司B</td>
+            <td>Matrix_Shanghai</td>
+            <td>群組B</td>
+            <td>專業版</td>
+            <td>2026/08/01~2027/08/01<span class="valid-period__extra">(+10天緩衝)</span></td>
+            <td><span class="badge badge--warning">Suspended</span></td>
+            <td>尚未繳款</td>
+            <td><button class="icon-btn"><img src="img/Tenant.png" alt="詳細資訊"></button></td>
+            <td>
+              <div class="icon-btn-group">
+                <button class="icon-btn--ghost"><img src="img/Edit.svg" alt="編輯"></button>
+                <button class="icon-btn--ghost"><img src="img/Badge.svg" alt="設定認證"></button>
+                <button class="icon-btn--ghost"><img src="img/Tenant_delet.svg" alt="刪除"></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>富士中國</td>
+            <td>Fuji China</td>
+            <td>群組中國</td>
+            <td>企業版</td>
+            <td>2026/08/01~2027/08/01</td>
+            <td><span class="badge badge--warning">Archived</span></td>
+            <td></td>
+            <td><button class="icon-btn"><img src="img/Tenant.png" alt="詳細資訊"></button></td>
+            <td>
+              <div class="icon-btn-group">
+                <button class="icon-btn--ghost"><img src="img/Edit.svg" alt="編輯"></button>
+                <button class="icon-btn--ghost"><img src="img/Badge.svg" alt="設定認證"></button>
+                <button class="icon-btn--ghost"><img src="img/Tenant_delet.svg" alt="刪除"></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>喬山健康科技上海有限公司</td>
+            <td>BBB</td>
+            <td>
+              <div class="tenant-group">
+                <span>群組中國</span>
+                <span>群組A</span>
+              </div>
+            </td>
+            <td>旗艦版</td>
+            <td class="text-muted">-未設定</td>
+            <td><span class="badge badge--success">Active</span></td>
+            <td></td>
+            <td><button class="icon-btn"><img src="img/Tenant.png" alt="詳細資訊"></button></td>
+            <td>
+              <div class="icon-btn-group">
+                <button class="icon-btn--ghost"><img src="img/Edit.svg" alt="編輯"></button>
+                <button class="icon-btn--ghost"><img src="img/Badge.svg" alt="設定認證"></button>
+                <button class="icon-btn--ghost"><img src="img/Tenant_delet.svg" alt="刪除"></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>子公司A</td>
+            <td>AAA</td>
+            <td>群組A</td>
+            <td>客制套餐</td>
+            <td class="text-muted">-未設定</td>
+            <td></td>
+            <td>A公司客製方案,洽談中,9月簽約</td>
+            <td><button class="icon-btn"><img src="img/Tenant.png" alt="詳細資訊"></button></td>
+            <td>
+              <div class="icon-btn-group">
+                <button class="icon-btn--ghost"><img src="img/Edit.svg" alt="編輯"></button>
+                <button class="icon-btn--ghost"><img src="img/Badge.svg" alt="設定認證"></button>
+                <button class="icon-btn--ghost"><img src="img/Tenant_delet.svg" alt="刪除"></button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <script>
+    (function () {
+      var CARET_LEFT_SVG = '<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M13.1633 15.5866C13.3394 15.7627 13.4384 16.0016 13.4384 16.2507C13.4384 16.4997 13.3394 16.7386 13.1633 16.9147C12.9872 17.0908 12.7483 17.1898 12.4992 17.1898C12.2502 17.1898 12.0113 17.0908 11.8352 16.9147L5.58519 10.6647C5.49779 10.5776 5.42844 10.4741 5.38112 10.3602C5.33381 10.2462 5.30945 10.124 5.30945 10.0006C5.30945 9.87726 5.33381 9.75509 5.38112 9.64113C5.42844 9.52718 5.49779 9.42368 5.58519 9.33659L11.8352 3.08659C12.0113 2.91047 12.2502 2.81152 12.4992 2.81152C12.7483 2.81152 12.9872 2.91047 13.1633 3.08659C13.3394 3.26271 13.4384 3.50158 13.4384 3.75065C13.4384 3.99972 13.3394 4.23859 13.1633 4.41471L7.57816 9.99987L13.1633 15.5866Z"/></svg>';
+      var CARET_RIGHT_SVG = '<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M14.4132 10.6637L8.16325 16.9137C7.98713 17.0899 7.74826 17.1888 7.49918 17.1888C7.25011 17.1888 7.01124 17.0899 6.83512 16.9137C6.659 16.7376 6.56006 16.4987 6.56006 16.2497C6.56006 16.0006 6.659 15.7617 6.83512 15.5856L12.4218 10.0005L6.83668 4.41374C6.74948 4.32653 6.6803 4.223 6.63311 4.10906C6.58591 3.99512 6.56162 3.873 6.56162 3.74967C6.56162 3.62635 6.58591 3.50423 6.63311 3.39028C6.6803 3.27634 6.74948 3.17282 6.83668 3.08561C6.92389 2.9984 7.02742 2.92923 7.14136 2.88203C7.2553 2.83484 7.37742 2.81055 7.50075 2.81055C7.62408 2.81055 7.7462 2.83484 7.86014 2.88203C7.97408 2.92923 8.0776 2.9984 8.16481 3.08561L14.4148 9.33561C14.5021 9.42281 14.5713 9.52639 14.6185 9.6404C14.6657 9.75441 14.6899 9.87661 14.6898 10C14.6896 10.1234 14.6651 10.2455 14.6177 10.3594C14.5702 10.4733 14.5007 10.5767 14.4132 10.6637Z"/></svg>';
+      var TOTAL = 65;
+      var STATUS_LIST = [
+        { text: '啟用', cls: 'badge--success' },
+        { text: '停用', cls: 'badge--warning' }
+      ];
+      var GROUPS = ['產品部', '設計部', '工程部', '行銷部', '客服部'];
+
+      function buildData() {
+        var rows = [];
+        for (var i = 1; i <= TOTAL; i++) {
+          var id = String(i).padStart(3, '0');
+          rows.push({
+            account: 'user' + id,
+            email: 'user' + id + '@example.com',
+            status: STATUS_LIST[i % STATUS_LIST.length],
+            group: GROUPS[i % GROUPS.length]
+          });
+        }
+        return rows;
+      }
+
+      var data = buildData();
+      var pageSize = 5;
+      var currentPage = 1;
+
+      function totalPages() {
+        return Math.max(1, Math.ceil(data.length / pageSize));
+      }
+
+      function getPageList(current, total) {
+        var delta = 1;
+        var range = [];
+        for (var i = 1; i <= total; i++) {
+          if (i === 1 || i === total || (i >= current - delta && i <= current + delta)) {
+            range.push(i);
+          } else if (range[range.length - 1] !== '...') {
+            range.push('...');
+          }
+        }
+        return range;
+      }
+
+      function renderTable() {
+        var tbody = document.getElementById('tableBody');
+        var start = (currentPage - 1) * pageSize;
+        var pageRows = data.slice(start, start + pageSize);
+        tbody.innerHTML = pageRows.map(function (row) {
+          return '<tr>' +
+            '<td>' + row.account + '</td>' +
+            '<td>' + row.email + '</td>' +
+            '<td><span class="badge ' + row.status.cls + '">' + row.status.text + '</span></td>' +
+            '<td>' + row.group + '</td>' +
+            '<td><a class="table-action">編輯</a><span class="table-action-divider">|</span><a class="table-action table-action--danger">刪除</a></td>' +
+            '</tr>';
+        }).join('');
+      }
+
+      function renderPagination() {
+        var container = document.getElementById('pagination');
+        var total = totalPages();
+        var start = (currentPage - 1) * pageSize + 1;
+        var end = Math.min(currentPage * pageSize, data.length);
+
+        var pagesHtml = getPageList(currentPage, total).map(function (p) {
+          if (p === '...') {
+            return '<span class="pagination__ellipsis">...</span>';
+          }
+          return '<button class="pagination__num' + (p === currentPage ? ' is-active' : '') + '" data-page="' + p + '">' + p + '</button>';
+        }).join('');
+
+        container.innerHTML =
+          '<div class="pagination__left">' +
+            '<span>每頁顯示:</span>' +
+            '<select class="pagination__size-select" id="pageSizeSelect">' +
+              [5, 10, 20, 50].map(function (n) {
+                return '<option value="' + n + '"' + (n === pageSize ? ' selected' : '') + '>' + n + '項</option>';
+              }).join('') +
+            '</select>' +
+            '<span class="pagination__total">共 ' + data.length + ' 項(第 ' + start + '-' + end + ' 項)</span>' +
+          '</div>' +
+          '<div class="pagination__pager">' +
+            '<button class="pagination__arrow" id="prevBtn" ' + (currentPage === 1 ? 'disabled' : '') + '>' + CARET_LEFT_SVG + '</button>' +
+            pagesHtml +
+            '<button class="pagination__arrow" id="nextBtn" ' + (currentPage === total ? 'disabled' : '') + '>' + CARET_RIGHT_SVG + '</button>' +
+          '</div>' +
+          '<div class="pagination__jump">' +
+            '<span>前往第</span>' +
+            '<input type="number" class="pagination__jump-input" id="jumpInput" min="1" max="' + total + '" value="' + currentPage + '">' +
+            '<span>頁</span>' +
+          '</div>';
+
+        document.getElementById('pageSizeSelect').addEventListener('change', function (e) {
+          pageSize = Number(e.target.value);
+          currentPage = 1;
+          render();
+        });
+        document.getElementById('prevBtn').addEventListener('click', function () { goToPage(currentPage - 1); });
+        document.getElementById('nextBtn').addEventListener('click', function () { goToPage(currentPage + 1); });
+        container.querySelectorAll('.pagination__num[data-page]').forEach(function (btn) {
+          btn.addEventListener('click', function () { goToPage(Number(btn.dataset.page)); });
+        });
+        document.getElementById('jumpInput').addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') goToPage(Number(e.target.value));
+        });
+      }
+
+      function goToPage(p) {
+        var total = totalPages();
+        if (p < 1 || p > total || isNaN(p)) return;
+        currentPage = p;
+        render();
+      }
+
+      function render() {
+        renderTable();
+        renderPagination();
+      }
+
+      render();
+    })();
+  </script>
+</body>
+</html>
