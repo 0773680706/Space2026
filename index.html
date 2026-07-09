@@ -12,7 +12,7 @@
     --color-secondary: #FF8E33;
     --color-success: #CAFFE6;
     --color-warning: #FFF7E6;
-    --color-danger: #FF383C;
+    --color-danger:#AC0000; /*#FF383C; */
     --color-cancel: #CDDEE4;
     --color-info: #909399;
     --color-border: #E4E7ED;
@@ -44,7 +44,7 @@
     --btn-cancel-bg-hover: #B9C8CD;
     --btn-cancel-bg-disabled: #E6EFF2;
     --btn-cancel-border: var(--color-border);
-    --btn-cancel-text: var(--color-text-cancel);
+    --btn-cancel-text:#FFFFFF;
     --btn-cancel-text-disabled: #CACDD1;
 
     /* Spacing */
@@ -239,9 +239,21 @@
     transition: background-color .2s, color .2s, border-color .2s;
     white-space: nowrap;
   }
-  .btn--sm { height: 28px; padding: 0 var(--space-3); font-size: var(--font-size-sm); }
-  .btn--md { height: 36px; padding: 0 var(--space-4); font-size: var(--font-size-base); }
+  .btn--sm { height: 26px; padding: 0 var(--space-3); font-size: var(--font-size-sm); }
+  .btn--md {height:30px;line-height:30px;padding:0px 12px; font-size: var(--font-size-base); }
   .btn--lg { height: 44px; padding: 0 var(--space-5); font-size: var(--font-size-md); }
+
+  /* Icon button (Default): padding 12px 10px, icon/text gap 4px */
+  .btn--icon {
+    height: auto;
+    gap: 4px;
+  }
+  .btn__icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+    flex-shrink: 0;
+  }
 
   .btn--primary {
     background-color: var(--btn-primary-bg);
@@ -665,7 +677,7 @@
         </div>
         <div class="swatch">
           <div class="swatch-color" style="background-color: var(--color-danger)"></div>
-          <div class="swatch-label"><b>Danger</b>#FF383C</div>
+          <div class="swatch-label"><b>必填Form message</b>#FF383C</div>
         </div>
         <div class="swatch">
           <div class="swatch-color" style="background-color: var(--color-bg)"></div>
@@ -740,6 +752,29 @@
           <button class="btn btn--cancel btn--sm" disabled>Small</button>
           <button class="btn btn--cancel btn--md" disabled>Medium</button>
           <button class="btn btn--cancel btn--lg" disabled>Large</button>
+        </div>
+      </div>
+
+      <div class="btn-variant-block">
+        <h3>Icon Button</h3>
+        <div class="btn-demo-row">
+          <span class="btn-demo-label">Icon Left</span>
+          <button class="btn btn--md btn--primary btn--icon">
+            <img class="btn__icon" src="img/Add.svg" alt="">
+            <span>新增</span>
+          </button>
+          &nbsp;&nbsp;
+          <button class="btn btn--md btn--secondary btn--icon">
+            <img class="btn__icon" src="img/Search.svg" alt="">
+            <span>搜尋</span>
+          </button>
+        </div>
+        <div class="btn-demo-row">
+          <span class="btn-demo-label">Icon Right</span>
+          <button class="btn btn--md btn--cancel btn--icon">
+            <span>刪除</span>
+            <img class="btn__icon" src="img/Delet2.svg" alt="">
+          </button>
         </div>
       </div>
     </div>
@@ -869,7 +904,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <!-- <div class="card">
       <h2>Shadow</h2>
       <div class="token-sample-row">
         <div class="token-sample" style="border: none; box-shadow: var(--shadow-sm)">sm</div>
@@ -877,7 +912,7 @@
         <div class="token-sample" style="border: none; box-shadow: var(--shadow-md)">md</div>
         <div class="token-sample" style="border: none; box-shadow: var(--shadow-lg)">lg</div>
       </div>
-    </div>
+    </div> -->
 
     <div class="card">
       <h2>Breakpoints</h2>
