@@ -5,7 +5,7 @@
   --color-secondary: #FF8E33;
   --color-success: #CAFFE6;
   --color-warning: #FFF7E6;
-  --color-danger: #AC0000;
+  --color-danger: #FF383C;
   --color-danger-bg: #FFE1E2;
   --color-cancel: #CDDEE4;
   --color-info: #909399;
@@ -22,6 +22,13 @@
   --color-text-Warning: #FF8E33;
   --color-link-Primary: #0DB1F2;
   --color-link-Secondary: #BDD1DB;
+
+  /*Soft: 同色相、飽和度較低的 Primary（#0DB1F2 → 較柔和的藍） */
+  --color-primary-soft: #4698B9;
+  --color-primary-softer: #98CCE1;
+  --color-secondary-soft: #E6A23C;
+  --color-secondary-softer: #F3D19E;
+
 
   /* Button states (derived from Primary / Secondary / Cancel) */
   --btn-primary-bg: var(--color-primary);
@@ -41,6 +48,23 @@
   --btn-cancel-text: #FFFFFF;
   --btn-cancel-text-disabled: #CACDD1;
 
+  --btn-primary-soft-bg: #F7F7F7;
+  --btn-primary-soft-bg-hover: #3B809B;
+  --btn-primary-soft-text:var(--color-primary-soft);
+
+  /* Line (outline) button, built on top of Secondary's color */
+  --btn-line-primary-text: var(--color-primary-soft);
+  --btn-line-primary-border: var(--color-primary-softer);
+  --btn-line-primary-bg-hover: #F7F7F7;
+  --btn-line-primary-text-hover:var(--btn-primary-bg-hover);
+  --btn-line-primary-border-hover:var(--btn-primary-bg-hover);
+  --btn-line-secondary-text: var(--color-secondary-soft);
+  --btn-line-secondary-border: var(--color-secondary-softer);
+  --btn-line-secondary-bg-hover: #F7F7F7;
+  --btn-line-secondary-text-hover: var(--btn-secondary-bg-hover);
+  --btn-line-secondary-border-hover: var(--btn-secondary-bg-hover);
+ 
+
   /* Spacing */
   --space-1: 4px;
   --space-2: 8px;
@@ -52,7 +76,7 @@
   --space-8: 64px;
 
   /* Typography */
-  --font-size-xs: 8px;
+  --font-size-xs: 10px;
   --font-size-sm: 12px;
   --font-size-base: 14px;
   --font-size-md: 16px;
@@ -314,6 +338,32 @@ main.grid {
   cursor: not-allowed;
 }
 
+
+/* Line (outline) variant: transparent background, colored border + text */
+.btn--line.btn--primary {
+  background-color: #F7F7F7;
+  color: var(--btn-line-primary-text);
+  border-color: var(--btn-line-primary-border);
+}
+.btn--line.btn--primary:hover,
+.btn--line.btn--primary.is-hover {
+  background-color: var(--btn-line-primary-bg-hover);
+  color: var(--btn-line-primary-text-hover);
+  border-color: var(--btn-line-primary-border-hover);
+}
+.btn--line.btn--secondary {
+  background-color: #F7F7F7;
+  color: var(--btn-line-secondary-text);
+  border-color: var(--btn-line-secondary-border);
+}
+.btn--line.btn--secondary:hover,
+.btn--line.btn--secondary.is-hover {
+  background-color: var(--btn-line-secondary-bg-hover);
+  color: var(--btn-line-secondary-text-hover);
+  border-color: var(--btn-line-secondary-border-hover);
+}
+
+
 .btn-variant-block {
   margin-bottom: var(--space-5);
 }
@@ -336,7 +386,7 @@ main.grid {
   margin-bottom: 0;
 }
 .btn-demo-label {
-  width: 64px;
+  width:40px;
   flex-shrink: 0;
   font-size: var(--font-size-xs);
   color: var(--color-text-secondary);
